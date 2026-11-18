@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Markybap — Honest Food Ratings. Crave-Worthy Eats.</title>
+<meta name="description" content="Markybap: honest Filipino food reviews and signature crave-worthy food products. Order now via Messenger, Viber, or SMS." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+  if (window.tailwind) tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          chili: { DEFAULT: '#D7261E', dark: '#A8170F', light: '#FDE8E6' },
+          gold: { DEFAULT: '#FFB800', dark: '#E09E00', light: '#FFF4D1' },
+          char: { DEFAULT: '#17140F', 800: '#26221C', 700: '#3A342B' },
+          cream: '#FFFBF3',
+        },
+        fontFamily: {
+          display: ['Anton', 'Impact', 'sans-serif'],
+          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        },
+        boxShadow: {
+          pop: '6px 6px 0 0 #17140F',
+          'pop-sm': '3px 3px 0 0 #17140F',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-padding-top: 80px; }
+  body { -webkit-tap-highlight-color: transparent; }
+  .img-wrap { background: linear-gradient(135deg, #FFB800 0%, #D7261E 100%); }
+  .img-wrap img { transition: transform .5s ease; }
+  .group:hover .img-wrap img { transform: scale(1.06); }
+  .marquee { animation: marquee 28s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .btn-pop { transition: transform .15s ease, box-shadow .15s ease; }
+  .btn-pop:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 0 #17140F; }
+  .btn-pop:active { transform: translate(2px, 2px); box-shadow: 0 0 0 0 #17140F; }
+  .bump { animation: bump .35s ease; }
+  @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.35)} 100%{transform:scale(1)} }
+  .stamp { transform: rotate(-8deg); }
+  @media (prefers-reduced-motion: reduce) { .marquee, .bump { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="bg-cream font-sans text-char antialiased">
+
+<!-- ================= NAV ================= -->
+<header id="top" class="sticky top-0 z-40 border-b-2 border-char bg-cream/95 backdrop-blur">
+  <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Main">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-char bg-chili font-display text-lg text-white">M</span>
+      <span class="font-display text-2xl tracking-wide">MARKY<span class="text-chili">BAP</span></span>
+    </a>
+    <ul class="hidden items-center gap-8 text-sm font-bold uppercase tracking-wide md:flex">
+      <li><a href="#reviews" class="hover:text-chili">Reviews</a></li>
+      <li><a href="#shop" class="hover:text-chili">Menu / Shop</a></li>
+      <li><a href="#about" class="hover:text-chili">About</a></li>
+      <li><a href="#contact" class="hover:text-chili">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-2">
+      <button type="button" data-open-cart class="relative grid h-11 w-11 place-items-center rounded-full border-2 border-char bg-white hover:bg-gold-light" aria-label="Open order cart">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/></svg>
+        <span data-cart-count class="absolute -right-1 -top-1 hidden min-w-[22px] rounded-full border-2 border-char bg-chili px-1 text-center text-xs font-extrabold leading-[18px] text-white">0</span>
+      </button>
+      <a href="#shop" class="btn-pop hidden rounded-full border-2 border-char bg-gold px-5 py-2 text-sm font-extrabold uppercase shadow-pop-sm sm:inline-block">Order Now</a>
+      <button type="button" id="menuBtn" class="grid h-11 w-11 place-items-center rounded-full border-2 border-char bg-white md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="menuIcon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="hidden border-t-2 border-char bg-cream md:hidden">
+    <ul class="flex flex-col px-4 py-3 font-display text-2xl tracking-wide">
+      <li><a href="#reviews" class="block py-2 hover:text-chili">Reviews</a></li>
+      <li><a href="#shop" class="block py-2 hover:text-chili">Menu / Shop</a></li>
+      <li><a href="#about" class="block py-2 hover:text-chili">About</a></li>
+      <li><a href="#contact" class="block py-2 hover:text-chili">Contact</a></li>
+      <li class="pt-2 pb-1"><a href="#shop" class="block rounded-full border-2 border-char bg-gold py-3 text-center font-sans text-base font-extrabold uppercase shadow-pop-sm">Order Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-gold/30 blur-3xl"></div>
+  <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-12 pt-10 sm:px-6 md:pt-16 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-20">
+    <div class="relative">
+      <span class="inline-flex items-center gap-2 rounded-full border-2 border-char bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wider">
+        <span class="h-2 w-2 animate-pulse rounded-full bg-chili"></span> New review every day
+      </span>
+      <h1 class="mt-5 font-display text-5xl uppercase leading-[0.95] sm:text-6xl lg:text-7xl">
+        Honest Food Ratings.<br />
+        <span class="relative inline-block text-chili">Crave-Worthy
+          <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 Q 75 1 150 7 T 298 5" stroke="#FFB800" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+        </span> Eats.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-char-700">
+        Kain muna! I taste-test the Philippines' best (and worst) eats so you don't waste a peso — then I bottle up the flavors I can't stop craving. Watch the reviews, then order the food.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="#shop" class="btn-pop inline-flex items-center justify-center gap-2 rounded-full border-2 border-char bg-chili px-7 py-4 font-extrabold uppercase text-white shadow-pop">
+          Order My Food
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <a href="#reviews" class="btn-pop inline-flex items-center justify-center gap-2 rounded-full border-2 border-char bg-white px-7 py-4 font-extrabold uppercase shadow-pop">
+          <svg class="h-5 w-5 text-chili" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Watch Reviews
+        </a>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <div class="img-wrap relative aspect-[4/5] overflow-hidden rounded-[2rem] border-2 border-char shadow-pop sm:aspect-[5/5] lg:aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80" alt="Placeholder: Markybap holding his signature dish with a thumbs-up" class="h-full w-full object-cover" onerror="this.remove()" />
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-char/80 to-transparent p-5 pt-16 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-gold">[Hero photo placeholder]</p>
+          <p class="font-display text-2xl uppercase">Markybap × his signature ulam</p>
+        </div>
+      </div>
+      <div class="stamp absolute -left-3 top-6 rounded-2xl border-2 border-char bg-gold px-4 py-3 text-center shadow-pop-sm sm:-left-6">
+        <p class="font-display text-4xl leading-none">9.5</p>
+        <p class="text-[10px] font-extrabold uppercase tracking-wider">/10 Must Try!</p>
+      </div>
+      <div class="absolute -right-2 bottom-24 flex items-center gap-2 rounded-full border-2 border-char bg-white px-4 py-2 text-sm font-extrabold shadow-pop-sm sm:-right-5">
+        <span class="grid h-7 w-7 place-items-center rounded-full bg-chili text-white">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11a2 2 0 0 0-2-2h-6.3l1-4.6v-.3a1.5 1.5 0 0 0-.4-1L13.2 1 6.6 7.6A2 2 0 0 0 6 9v10a2 2 0 0 0 2 2h9a2 2 0 0 0 1.8-1.2l3-7.1c.1-.2.2-.5.2-.7v-2z"/></svg>
+        </span>
+        Markybap Approved
+      </div>
+    </div>
+  </div>
+
+  <!-- Social proof bar -->
+  <div class="border-y-2 border-char bg-char text-cream">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 divide-cream/15 px-4 sm:px-6 md:grid-cols-4 md:divide-x lg:px-8">
+      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">500K+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Followers</p></div>
+      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">10M+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Video Views</p></div>
+      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">300+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Spots Rated</p></div>
+      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">100%</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Honest Ratings</p></div>
+    </div>
+  </div>
+  <div class="overflow-hidden border-b-2 border-char bg-gold py-3" aria-hidden="true">
+    <div class="marquee flex w-max gap-8 whitespace-nowrap font-display text-xl uppercase tracking-wide">
+      <span>Sulit ba?</span><span>★</span><span>Lami kaayo!</span><span>★</span><span>Walang sponsor-sponsor</span><span>★</span><span>Ang sarap!</span><span>★</span><span>Kain muna</span><span>★</span><span>Must try!</span><span>★</span>
+      <span>Sulit ba?</span><span>★</span><span>Lami kaayo!</span><span>★</span><span>Walang sponsor-sponsor</span><span>★</span><span>Ang sarap!</span><span>★</span><span>Kain muna</span><span>★</span><span>Must try!</span><span>★</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+  <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <div>
+      <p class="text-sm font-extrabold uppercase tracking-widest text-chili">The Food Trip Files</p>
+      <h2 class="mt-2 font-display text-4xl uppercase sm:text-5xl">Featured Reviews &amp; Ratings</h2>
+      <p class="mt-3 max-w-xl text-char-700">Tinikman ko na, para hindi ka na manghula. Tap a card to watch the full review on Facebook.</p>
+    </div>
+    <div id="reviewFilters" class="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:px-0" role="tablist" aria-label="Filter reviews"></div>
+  </div>
+  <div id="reviewGrid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<section id="shop" class="border-y-2 border-char bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <p class="text-sm font-extrabold uppercase tracking-widest text-chili">Markybap's Kitchen</p>
+        <h2 class="mt-2 font-display text-4xl uppercase sm:text-5xl">Menu / Shop</h2>
+        <p class="mt-3 max-w-xl text-char-700">Small-batch, made the way I'd rate a 10. Add to your order, then send it to us via Messenger, Viber, or SMS — we'll confirm and deliver.</p>
+      </div>
+      <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-char bg-gold-light px-4 py-3 text-sm font-bold">
+        <svg class="h-6 w-6 shrink-0 text-chili" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+        Metro Manila delivery &amp; nationwide shipping
+      </div>
+    </div>
+    <div id="productGrid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div class="relative order-2 lg:order-1">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="img-wrap aspect-[3/4] overflow-hidden rounded-3xl border-2 border-char shadow-pop">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80" alt="Placeholder: Markybap on a street-food trip" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()" />
+        </div>
+        <div class="img-wrap mt-10 aspect-[3/4] overflow-hidden rounded-3xl border-2 border-char shadow-pop">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80" alt="Placeholder: Markybap cooking in his kitchen" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()" />
+        </div>
+      </div>
+      <div class="stamp absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-2 border-char bg-chili px-5 py-2 font-display text-lg uppercase text-white shadow-pop-sm">From carinderia to kitchen</div>
+    </div>
+    <div class="order-1 lg:order-2">
+      <p class="text-sm font-extrabold uppercase tracking-widest text-chili">About Markybap</p>
+      <h2 class="mt-2 font-display text-4xl uppercase sm:text-5xl">One phone. One spoon.<br/>Zero sugarcoating.</h2>
+      <div class="mt-6 space-y-4 text-lg text-char-700">
+        <p>It started with a cheap phone tripod and a plate of tapsilog at a roadside carinderia. I just wanted to tell my friends which spots were <em>sulit</em> — and which ones weren't. Ang dami palang nakikinig.</p>
+        <p>Hundreds of food trips later, the community kept asking the same thing: <strong class="text-char">"Ikaw, Marky, anong luto mo?"</strong> So I went back to my lola's recipes, tested them like I test everyone else's, and only bottled the ones that scored a 9 or higher.</p>
+        <p>Same rule for my reviews and my food: if it's not good, I'll say it. If it's good, I'll sell it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How I Rate -->
+  <div class="mt-20 rounded-[2rem] border-2 border-char bg-char p-6 text-cream shadow-pop sm:p-10 lg:p-14">
+    <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <p class="text-sm font-extrabold uppercase tracking-widest text-gold">The Markybap Scale</p>
+        <h3 class="mt-2 font-display text-4xl uppercase sm:text-5xl">How I Rate</h3>
+      </div>
+      <p class="max-w-md text-cream/75">Every score out of 10 is built from three pillars. No paid ratings — sponsored videos are always labeled.</p>
+    </div>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <article class="rounded-3xl border-2 border-cream/20 bg-char-800 p-6 transition hover:-translate-y-1 hover:border-gold">
+        <p class="font-display text-6xl text-chili">01</p>
+        <h4 class="mt-3 font-display text-2xl uppercase">Taste &amp; Authenticity</h4>
+        <p class="mt-2 text-cream/75">Does it taste like it should — or better? Seasoning, texture, freshness, and respect for the original recipe.</p>
+        <p class="mt-4 inline-block rounded-full bg-cream/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">40% of the score</p>
+      </article>
+      <article class="rounded-3xl border-2 border-cream/20 bg-char-800 p-6 transition hover:-translate-y-1 hover:border-gold">
+        <p class="font-display text-6xl text-chili">02</p>
+        <h4 class="mt-3 font-display text-2xl uppercase">Value for Money</h4>
+        <p class="mt-2 text-cream/75">Sulit ba? Portion, price, and quality weighed together. A ₱60 silog can beat a ₱600 steak.</p>
+        <p class="mt-4 inline-block rounded-full bg-cream/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">30% of the score</p>
+      </article>
+      <article class="rounded-3xl border-2 border-cream/20 bg-char-800 p-6 transition hover:-translate-y-1 hover:border-gold">
+        <p class="font-display text-6xl text-chili">03</p>
+        <h4 class="mt-3 font-display text-2xl uppercase">Crave Factor</h4>
+        <p class="mt-2 text-cream/75">Will I think about it at 2 AM? Would I drive back for it? The "balik-balikan" test.</p>
+        <p class="mt-4 inline-block rounded-full bg-cream/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">30% of the score</p>
+      </article>
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3 text-sm font-bold">
+      <span class="rounded-full bg-gold px-3 py-1 text-char">9–10 · Must Try!</span>
+      <span class="rounded-full bg-cream px-3 py-1 text-char">7–8.9 · Solid Pick</span>
+      <span class="rounded-full bg-cream/20 px-3 py-1">5–6.9 · Pwede Na</span>
+      <span class="rounded-full bg-chili px-3 py-1 text-white">Below 5 · Skip It</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOCIAL HUB ================= -->
+<section class="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+  <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border-2 border-char bg-chili p-8 text-white shadow-pop sm:p-12 lg:p-16">
+    <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/40 blur-2xl"></div>
+    <div class="relative grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-4xl uppercase leading-none sm:text-6xl">Sama ka sa<br/>next food trip!</h2>
+        <p class="mt-4 max-w-md text-lg text-white/90">Daily food reviews, behind-the-scenes cooking, and first dibs on restock announcements — sold-out batches go fast.</p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+        <a href="[Insert Facebook Page Link]" target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1877F2] text-white"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></span>
+          <span><span class="block font-extrabold">Facebook</span><span class="text-sm text-char-700">500K+ followers</span></span>
+        </a>
+        <a href="https://www.tiktok.com/@markybap" target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-char text-white"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 3a5 5 0 0 0 4 4v3.2a8 8 0 0 1-4-1.2v6.5A6.5 6.5 0 1 1 10 9v3.3a3.3 3.3 0 1 0 3.3 3.2V3h3.2z"/></svg></span>
+          <span><span class="block font-extrabold">TikTok</span><span class="text-sm text-char-700">Daily food trips</span></span>
+        </a>
+        <a href="https://www.youtube.com/@markybap" target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#FF0000] text-white"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+          <span><span class="block font-extrabold">YouTube</span><span class="text-sm text-char-700">Full-length reviews</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact" class="border-t-2 border-char bg-char text-cream">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+    <div class="lg:col-span-2">
+      <a href="#top" class="font-display text-3xl tracking-wide">MARKY<span class="text-gold">BAP</span></a>
+      <p class="mt-3 max-w-sm text-cream/70">Honest food ratings. Crave-worthy eats. Proudly Filipino, proudly <em>sulit</em>.</p>
+      <div class="mt-6 rounded-2xl border-2 border-cream/15 bg-char-800 p-5">
+        <p class="font-display text-xl uppercase text-gold">Want your restaurant featured?</p>
+        <p class="mt-1 text-sm text-cream/70">For food features, brand collaborations, and events. Note: I always share my honest verdict — paid or not.</p>
+        <a href="mailto:collabs@markybap.ph?subject=Feature%20%2F%20Collaboration%20Inquiry" class="btn-pop mt-4 inline-block rounded-full border-2 border-char bg-gold px-5 py-2 text-sm font-extrabold uppercase text-char">Send an Inquiry</a>
+      </div>
+    </div>
+    <div>
+      <p class="text-sm font-extrabold uppercase tracking-widest text-gold">Business Inquiries</p>
+      <ul class="mt-4 space-y-3 text-cream/80">
+        <li><span class="block text-xs uppercase tracking-wider text-cream/50">Email</span><a href="mailto:collabs@markybap.ph" class="hover:text-gold">collabs@markybap.ph</a></li>
+        <li><span class="block text-xs uppercase tracking-wider text-cream/50">Phone / Viber</span><a href="tel:+639171234567" class="hover:text-gold">+63 917 123 4567</a></li>
+        <li><span class="block text-xs uppercase tracking-wider text-cream/50">Based in</span>Metro Manila, Philippines</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-extrabold uppercase tracking-widest text-gold">Quick Links</p>
+      <ul class="mt-4 space-y-2 text-cream/80">
+        <li><a href="#reviews" class="hover:text-gold">Reviews</a></li>
+        <li><a href="#shop" class="hover:text-gold">Menu / Shop</a></li>
+        <li><a href="#about" class="hover:text-gold">How I Rate</a></li>
+        <li><button type="button" data-open-cart class="hover:text-gold">My Order</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-cream/10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-cream/50 sm:flex-row sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Markybap. All rights reserved.</p>
+      <p>Made with gutom &amp; garlic rice.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating mobile cart button -->
+<button type="button" data-open-cart id="fabCart" class="btn-pop fixed bottom-4 left-4 right-4 z-30 hidden items-center justify-between rounded-full border-2 border-char bg-chili px-5 py-3 font-extrabold text-white shadow-pop md:hidden" aria-label="View order">
+  <span>View Order · <span data-cart-count-text>0 items</span></span>
+  <span data-cart-total-fab>₱0</span>
+</button>
+
+<!-- ================= CART DRAWER ================= -->
+<div id="cartOverlay" class="fixed inset-0 z-50 hidden bg-char/60 opacity-0 transition-opacity duration-300"></div>
+<aside id="cartDrawer" class="fixed right-0 top-0 z-50 flex h-full w-full max-w-md translate-x-full flex-col border-l-2 border-char bg-cream transition-transform duration-300" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+  <div class="flex items-center justify-between border-b-2 border-char bg-gold px-5 py-4">
+    <h2 id="cartTitle" class="font-display text-2xl uppercase">Your Order</h2>
+    <button type="button" id="closeCart" class="grid h-10 w-10 place-items-center rounded-full border-2 border-char bg-white" aria-label="Close cart">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <div id="cartEmpty" class="py-16 text-center">
+      <p class="font-display text-3xl uppercase">Gutom ka na?</p>
+      <p class="mt-2 text-char-700">Your order is empty. Add something crave-worthy!</p>
+      <a href="#shop" data-close-cart class="btn-pop mt-6 inline-block rounded-full border-2 border-char bg-chili px-6 py-3 font-extrabold uppercase text-white shadow-pop-sm">Browse the Menu</a>
+    </div>
+    <ul id="cartItems" class="space-y-3"></ul>
+
+    <div id="checkoutForm" class="mt-6 hidden space-y-3">
+      <p class="text-sm font-extrabold uppercase tracking-widest text-chili">Delivery details</p>
+      <input id="custName" type="text" placeholder="Your name" autocomplete="name" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
+      <input id="custPhone" type="tel" placeholder="Mobile number" autocomplete="tel" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
+      <textarea id="custAddress" rows="2" placeholder="Delivery address" autocomplete="street-address" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60"></textarea>
+      <select id="custPayment" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60">
+        <option>GCash</option><option>Maya</option><option>Cash on Delivery</option><option>Bank Transfer</option>
+      </select>
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="orderMsg" class="text-sm font-extrabold uppercase tracking-widest text-chili">Order message</label>
+          <span class="text-xs text-char-700">Auto-generated</span>
+        </div>
+        <textarea id="orderMsg" rows="8" readonly class="mt-2 w-full rounded-xl border-2 border-char bg-white px-4 py-3 font-mono text-xs leading-relaxed"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartFooter" class="hidden border-t-2 border-char bg-white px-5 py-4">
+    <div class="space-y-1 text-sm">
+      <div class="flex justify-between"><span>Subtotal</span><span id="cartSubtotal">₱0</span></div>
+      <div class="flex justify-between text-char-700"><span>Delivery</span><span>Calculated on confirmation</span></div>
+    </div>
+    <div class="mt-2 flex items-end justify-between">
+      <span class="font-display text-xl uppercase">Total</span>
+      <span id="cartTotal" class="font-display text-3xl text-chili">₱0</span>
+    </div>
+    <div class="mt-4 grid grid-cols-2 gap-2">
+      <button type="button" id="copyOrder" class="btn-pop col-span-2 rounded-full border-2 border-char bg-gold py-3 font-extrabold uppercase shadow-pop-sm">Copy Order Message</button>
+      <a id="sendMessenger" href="#" target="_blank" rel="noopener" class="btn-pop flex items-center justify-center gap-2 rounded-full border-2 border-char bg-[#0866FF] py-3 text-sm font-extrabold text-white shadow-pop-sm">Messenger</a>
+      <a id="sendViber" href="#" class="btn-pop flex items-center justify-center gap-2 rounded-full border-2 border-char bg-[#7360F2] py-3 text-sm font-extrabold text-white shadow-pop-sm">Viber</a>
+      <a id="sendSMS" href="#" class="btn-pop col-span-2 flex items-center justify-center gap-2 rounded-full border-2 border-char bg-char py-3 text-sm font-extrabold text-white shadow-pop-sm">Send via SMS</a>
+    </div>
+    <p class="mt-3 text-center text-xs text-char-700">Messenger opens our page — paste the copied message to send.</p>
+  </div>
+</aside>
+
+<!-- Toast -->
+<div id="toast" class="pointer-events-none fixed left-1/2 top-20 z-[60] -translate-x-1/2 -translate-y-4 rounded-full border-2 border-char bg-char px-5 py-2 text-sm font-bold text-cream opacity-0 shadow-pop-sm transition-all duration-300"></div>
+
+<script>
+/* ===================== CONFIG — edit these ===================== */
+const CONFIG = {
+  messengerUsername: 'markybap',          // m.me/<username>  → replace with the real Facebook Page username
+  orderPhone: '+639171234567',            // SMS / Viber number for orders
+  facebookPage: '[Insert Facebook Page Link]',
+};
+
+const U = (id, w = 800) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+/* ===================== DATA ===================== */
+const REVIEWS = [
+  { id: 1, cat: 'Street Food', name: 'Mang Ben\'s Isaw & BBQ', place: 'Cubao, QC', score: 9.5, verdict: 'Smoky, sticky, and only ₱15 a stick — the sawsawan alone deserves its own award.', img: 'photo-1555939594-58d7cb561ad1', len: '8:42' },
+  { id: 2, cat: 'Restaurants', name: 'Lola Cora\'s Kare-Kare', place: 'Pampanga', score: 9.2, verdict: 'Bagoong-level perfection; the oxtail falls apart if you look at it too long.', img: 'photo-1547592180-85f173990554', len: '12:10' },
+  { id: 3, cat: 'Fast Food', name: 'The Viral ₱99 Chicken Bucket', place: 'Makati', score: 6.4, verdict: 'Crispy for the first five minutes, then it\'s a soggy sadness bucket.', img: 'photo-1626082927389-6cd097cdc6ec', len: '6:55' },
+  { id: 4, cat: 'Desserts', name: 'Halo-Halo ni Aling Nena', place: 'Malabon', score: 9.8, verdict: 'Finely shaved ice, homemade leche flan — this is the halo-halo final boss.', img: 'photo-1563805042-7684c019e1cb', len: '9:30' },
+  { id: 5, cat: 'Restaurants', name: 'Sizzling Sisig House', place: 'Angeles City', score: 8.7, verdict: 'Loud sizzle, crunchy bits, and the calamansi squeeze brings it home.', img: 'photo-1512058564366-18510be2db19', len: '10:04' },
+  { id: 6, cat: 'Street Food', name: 'Kwek-Kwek Corner', place: 'Divisoria', score: 4.5, verdict: 'Too much batter, too little egg, and the vinegar tasted like regret.', img: 'photo-1565299624946-b28f40a0ae38', len: '5:18' },
+];
+
+const PRODUCTS = [
+  { id: 'cg', name: 'Signature Chili Garlic Crunch', size: '220g jar', price: 189, tags: ['🌶🌶🌶 Hot', 'Garlicky', 'Bestseller'], desc: 'Golden-fried garlic, Siling Labuyo, and a secret umami crunch. Ang sarap sa kahit anong kanin.', img: 'photo-1472476443507-c7a5948772fc', badge: 'Bestseller' },
+  { id: 'chicharon', name: 'Crispy Chicharon Bits', size: '150g pack', price: 149, tags: ['Crunchy', 'Salty', 'Snack'], desc: 'Triple-cooked pork crackling bits with a vinegar-garlic dust. Pulutan-certified.', img: 'photo-1621996346565-e3dbc646d9a9' },
+  { id: 'adobo', name: 'Bottled Gourmet Adobo Flakes', size: '250g jar', price: 259, tags: ['Savory', 'Ready-to-eat', 'Mild'], desc: 'Slow-braised, shredded, then fried till crisp. Just add rice and a fried egg.', img: 'photo-1529042410759-befb1204b468', badge: 'New' },
+  { id: 'bundle', name: 'Kain Muna Bundle Deal', size: '3 items + free tote', price: 549, was: 597, tags: ['Save ₱48', 'Gift-ready', 'All-in'], desc: 'One of each: Chili Garlic Crunch, Chicharon Bits, and Adobo Flakes. Sulit na sulit.', img: 'photo-1504674900247-0877df9cc836', badge: 'Best Value' },
+];
+
+/* ===================== HELPERS ===================== */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const peso = n => '₱' + n.toLocaleString('en-PH');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function rating(score) {
+  if (score >= 9) return { label: 'Must Try!', cls: 'bg-gold text-char' };
+  if (score >= 7) return { label: 'Solid Pick', cls: 'bg-white text-char' };
+  if (score >= 5) return { label: 'Pwede Na', cls: 'bg-char text-cream' };
+  return { label: 'Skip It', cls: 'bg-chili text-white' };
+}
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.remove('opacity-0', '-translate-y-4');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.add('opacity-0', '-translate-y-4'), 1800);
+}
+
+/* ===================== MOBILE MENU ===================== */
+const menuBtn = $('#menuBtn'), mobileMenu = $('#mobileMenu');
+menuBtn.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('hidden') === false;
+  menuBtn.setAttribute('aria-expanded', open);
+  $('#menuIcon').innerHTML = open
+    ? '<path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/>'
+    : '<path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>';
+});
+$$('#mobileMenu a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', false); $('#menuIcon').innerHTML = '<path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>'; }));
+
+/* ===================== REVIEWS + FILTERS ===================== */
+const CATS = ['All', ...new Set(REVIEWS.map(r => r.cat))];
+let activeCat = 'All';
+
+function renderFilters() {
+  $('#reviewFilters').innerHTML = CATS.map(c => `
+    <button type="button" role="tab" aria-selected="${c === activeCat}" data-cat="${esc(c)}"
+      class="shrink-0 rounded-full border-2 border-char px-4 py-2 text-sm font-extrabold uppercase transition ${c === activeCat ? 'bg-char text-cream shadow-pop-sm' : 'bg-white hover:bg-gold-light'}">${esc(c)}</button>`).join('');
+}
+
+function renderReviews() {
+  const list = REVIEWS.filter(r => activeCat === 'All' || r.cat === activeCat);
+  $('#reviewGrid').innerHTML = list.map(r => {
+    const b = rating(r.score);
+    return `
+    <article class="group flex flex-col overflow-hidden rounded-3xl border-2 border-char bg-white shadow-pop transition hover:-translate-y-1">
+      <a href="${esc(CONFIG.facebookPage)}" target="_blank" rel="noopener" class="img-wrap relative block aspect-video overflow-hidden border-b-2 border-char" aria-label="Watch ${esc(r.name)} review on Facebook">
+        <img src="${U(r.img, 700)}" alt="Video thumbnail: ${esc(r.name)}" loading="lazy" class="h-full w-full object-cover" onerror="this.remove()" />
+        <span class="absolute inset-0 bg-char/20 transition group-hover:bg-char/40"></span>
+        <span class="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-char bg-chili text-white shadow-pop-sm transition group-hover:scale-110">
+          <svg class="ml-1 h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="absolute left-3 top-3 rounded-full bg-char/80 px-3 py-1 text-xs font-bold uppercase tracking-wide text-cream">${esc(r.cat)}</span>
+        <span class="absolute bottom-3 right-3 rounded-md bg-char/80 px-2 py-0.5 text-xs font-bold text-cream">${r.len}</span>
+      </a>
+      <div class="flex flex-1 flex-col p-5">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="font-display text-2xl uppercase leading-tight">${esc(r.name)}</h3>
+            <p class="text-sm font-semibold text-char-700">📍 ${esc(r.place)}</p>
+          </div>
+          <div class="stamp shrink-0 rounded-2xl border-2 border-char ${b.cls} px-3 py-2 text-center shadow-pop-sm" title="Markybap Rating">
+            <p class="font-display text-2xl leading-none">${r.score.toFixed(1)}<span class="text-xs">/10</span></p>
+            <p class="text-[10px] font-extrabold uppercase">${b.label}</p>
+          </div>
+        </div>
+        <p class="mt-3 flex-1 text-char-700">"${esc(r.verdict)}"</p>
+        <a href="${esc(CONFIG.facebookPage)}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 font-extrabold uppercase text-chili hover:underline">
+          Watch full video on Facebook
+          <svg class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+$('#reviewFilters').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cat]');
+  if (!btn) return;
+  activeCat = btn.dataset.cat;
+  renderFilters(); renderReviews();
+});
+
+/* ===================== PRODUCTS ===================== */
+function renderProducts() {
+  $('#productGrid').innerHTML = PRODUCTS.map(p => `
+    <article class="group flex flex-col overflow-hidden rounded-3xl border-2 border-char bg-cream shadow-pop transition hover:-translate-y-1">
+      <div class="img-wrap relative aspect-square overflow-hidden border-b-2 border-char">
+        <img src="${U(p.img, 700)}" alt="${esc(p.name)}" loading="lazy" class="h-full w-full object-cover" onerror="this.remove()" />
+        ${p.badge ? `<span class="stamp absolute left-3 top-3 rounded-full border-2 border-char bg-gold px-3 py-1 text-xs font-extrabold uppercase">${esc(p.badge)}</span>` : ''}
+      </div>
+      <div class="flex flex-1 flex-col p-5">
+        <div class="flex flex-wrap gap-1.5">
+          ${p.tags.map(t => `<span class="rounded-full border border-char/20 bg-white px-2 py-0.5 text-[11px] font-bold">${esc(t)}</span>`).join('')}
+        </div>
+        <h3 class="mt-3 font-display text-2xl uppercase leading-tight">${esc(p.name)}</h3>
+        <p class="text-xs font-bold uppercase tracking-wider text-char-700">${esc(p.size)}</p>
+        <p class="mt-2 flex-1 text-sm text-char-700">${esc(p.desc)}</p>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <p class="font-display text-3xl text-chili">${peso(p.price)}${p.was ? ` <span class="font-sans text-sm font-bold text-char-700 line-through">${peso(p.was)}</span>` : ''}</p>
+        </div>
+        <button type="button" data-add="${p.id}" class="btn-pop mt-3 flex w-full items-center justify-center gap-2 rounded-full border-2 border-char bg-chili py-3 font-extrabold uppercase text-white shadow-pop-sm">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+          Add to Order
+        </button>
+      </div>
+    </article>`).join('');
+}
+
+/* ===================== CART ===================== */
+const cart = new Map(); // id -> qty (in-memory)
+
+function cartLines() {
+  return [...cart.entries()].map(([id, qty]) => ({ ...PRODUCTS.find(p => p.id === id), qty }));
+}
+function cartTotal() { return cartLines().reduce((s, l) => s + l.price * l.qty, 0); }
+function cartCount() { return [...cart.values()].reduce((a, b) => a + b, 0); }
+
+function addToCart(id, n = 1) {
+  cart.set(id, (cart.get(id) || 0) + n);
+  if (cart.get(id) <= 0) cart.delete(id);
+  renderCart();
+}
+
+function buildMessage() {
+  const lines = cartLines();
+  const name = $('#custName').value.trim() || '[Name]';
+  const phone = $('#custPhone').value.trim() || '[Mobile number]';
+  const addr = $('#custAddress').value.trim() || '[Delivery address]';
+  const pay = $('#custPayment').value;
+  return [
+    'Hi Markybap! 👋 I\'d like to order:',
+    '',
+    ...lines.map(l => `• ${l.qty} x ${l.name} (${l.size}) — ${peso(l.price * l.qty)}`),
+    '',
+    `TOTAL: ${peso(cartTotal())} (+ delivery fee)`,
+    '',
+    `Name: ${name}`,
+    `Mobile: ${phone}`,
+    `Address: ${addr}`,
+    `Payment: ${pay}`,
+    '',
+    'Salamat! 🙏',
+  ].join('\n');
+}
+
+function updateMessage() {
+  if (!cart.size) return;
+  const msg = buildMessage();
+  $('#orderMsg').value = msg;
+  const enc = encodeURIComponent(msg);
+  $('#sendMessenger').href = `https://m.me/${CONFIG.messengerUsername}?text=${enc}`;
+  $('#sendViber').href = `viber://forward?text=${enc}`;
+  const sep = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? '&' : '?';
+  $('#sendSMS').href = `sms:${CONFIG.orderPhone}${sep}body=${enc}`;
+}
+
+function renderCart() {
+  const lines = cartLines(), count = cartCount(), total = cartTotal();
+  const empty = lines.length === 0;
+  $('#cartEmpty').classList.toggle('hidden', !empty);
+  $('#checkoutForm').classList.toggle('hidden', empty);
+  $('#cartFooter').classList.toggle('hidden', empty);
+
+  $('#cartItems').innerHTML = lines.map(l => `
+    <li class="flex gap-3 rounded-2xl border-2 border-char bg-white p-3">
+      <div class="img-wrap h-16 w-16 shrink-0 overflow-hidden rounded-xl border-2 border-char"><img src="${U(l.img, 200)}" alt="" class="h-full w-full object-cover" onerror="this.remove()" /></div>
+      <div class="min-w-0 flex-1">
+        <p class="truncate font-extrabold">${esc(l.name)}</p>
+        <p class="text-xs text-char-700">${peso(l.price)} · ${esc(l.size)}</p>
+        <div class="mt-2 flex items-center justify-between">
+          <div class="flex items-center rounded-full border-2 border-char">
+            <button type="button" data-dec="${l.id}" class="grid h-8 w-8 place-items-center font-extrabold" aria-label="Decrease quantity">−</button>
+            <span class="w-6 text-center text-sm font-extrabold">${l.qty}</span>
+            <button type="button" data-inc="${l.id}" class="grid h-8 w-8 place-items-center font-extrabold" aria-label="Increase quantity">+</button>
+          </div>
+          <span class="font-extrabold text-chili">${peso(l.price * l.qty)}</span>
+        </div>
+      </div>
+      <button type="button" data-remove="${l.id}" class="self-start text-char-700 hover:text-chili" aria-label="Remove ${esc(l.name)}">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </li>`).join('');
+
+  $('#cartSubtotal').textContent = peso(total);
+  $('#cartTotal').textContent = peso(total);
+  $$('[data-cart-count]').forEach(el => { el.textContent = count; el.classList.toggle('hidden', count === 0); });
+  $('[data-cart-count-text]').textContent = `${count} item${count === 1 ? '' : 's'}`;
+  $('[data-cart-total-fab]').textContent = peso(total);
+  $('#fabCart').classList.toggle('hidden', count === 0);
+  $('#fabCart').classList.toggle('flex', count > 0);
+  updateMessage();
+}
+
+/* Drawer open/close */
+const drawer = $('#cartDrawer'), overlay = $('#cartOverlay');
+let lastFocus = null;
+function openCart() {
+  lastFocus = document.activeElement;
+  overlay.classList.remove('hidden');
+  requestAnimationFrame(() => { overlay.classList.remove('opacity-0'); drawer.classList.remove('translate-x-full'); });
+  drawer.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => $('#closeCart').focus(), 300);
+}
+function closeCart() {
+  overlay.classList.add('opacity-0');
+  drawer.classList.add('translate-x-full');
+  drawer.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  setTimeout(() => overlay.classList.add('hidden'), 300);
+  if (lastFocus) lastFocus.focus();
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-open-cart]')) openCart();
+  if (e.target.closest('[data-close-cart]')) closeCart();
+  const add = e.target.closest('[data-add]');
+  if (add) {
+    addToCart(add.dataset.add);
+    const p = PRODUCTS.find(x => x.id === add.dataset.add);
+    toast(`Added: ${p.name} 🔥`);
+    $$('[data-cart-count]').forEach(el => { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+  }
+  const inc = e.target.closest('[data-inc]'); if (inc) addToCart(inc.dataset.inc, 1);
+  const dec = e.target.closest('[data-dec]'); if (dec) addToCart(dec.dataset.dec, -1);
+  const rm = e.target.closest('[data-remove]'); if (rm) { cart.delete(rm.dataset.remove); renderCart(); }
+});
+overlay.addEventListener('click', closeCart);
+$('#closeCart').addEventListener('click', closeCart);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) closeCart(); });
+['#custName', '#custPhone', '#custAddress', '#custPayment'].forEach(s => $(s).addEventListener('input', updateMessage));
+
+/* Copy + send */
+async function copyMsg() {
+  const msg = buildMessage();
+  try { await navigator.clipboard.writeText(msg); }
+  catch { const ta = $('#orderMsg'); ta.select(); document.execCommand('copy'); }
+  toast('Order copied! Paste it in our chat ✅');
+}
+$('#copyOrder').addEventListener('click', copyMsg);
+$('#sendMessenger').addEventListener('click', () => { copyMsg(); });
+
+/* ===================== INIT ===================== */
+$('#year').textContent = new Date().getFullYear();
+renderFilters(); renderReviews(); renderProducts(); renderCart();
+</script>
+</body>
+</html>
