@@ -12,3 +12,12 @@ body { -webkit-tap-highlight-color: transparent; }
 @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.35)} 100%{transform:scale(1)} }
 .stamp { transform: rotate(-8deg); }
 @media (prefers-reduced-motion: reduce) { .marquee, .bump { animation: none; } html { scroll-behavior: auto; } }
+
+/* Form fields */
+.field-dark { width: 100%; border-radius: .75rem; border: 2px solid rgba(255, 251, 243, .2); background: #17140F; color: #FFFBF3; padding: .75rem 1rem; min-height: 44px; outline: none; transition: border-color .15s ease, box-shadow .15s ease; }
+.field-dark::placeholder { color: rgba(255, 251, 243, .45); }
+.field-dark:focus { border-color: #FFB800; box-shadow: 0 0 0 4px rgba(255, 184, 0, .3); }
+.field-err { margin-top: .25rem; font-size: .75rem; font-weight: 700; color: #D7261E; }
+.field-dark + .field-err { color: #FF7A72; }
+.field-invalid { border-color: #D7261E !important; }
+.field-dark.field-invalid { border-color: #FF7A72 !important; }

@@ -77,7 +77,7 @@
   <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-12 pt-10 sm:px-6 md:pt-16 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-20">
     <div class="relative">
       <span class="inline-flex items-center gap-2 rounded-full border-2 border-char bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wider">
-        <span class="h-2 w-2 animate-pulse rounded-full bg-chili"></span> New review every day
+        <span class="h-2 w-2 animate-pulse rounded-full bg-chili"></span> The Pambansang Rater · New review every day
       </span>
       <h1 class="mt-5 font-display text-5xl uppercase leading-[0.95] sm:text-6xl lg:text-7xl">
         Honest Food Ratings.<br />
@@ -102,9 +102,10 @@
 
     <div class="relative mx-auto w-full max-w-md lg:max-w-none">
       <div class="img-wrap relative aspect-[4/5] overflow-hidden rounded-[2rem] border-2 border-char shadow-pop sm:aspect-[5/5] lg:aspect-[4/5]">
-        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80" alt="Placeholder: Markybap holding his signature dish with a thumbs-up" class="h-full w-full object-cover" onerror="this.remove()" />
+        <!-- Marky's photo: save it as images/marky-hero.jpg (portrait, ~1000x1250). Falls back to a stock food photo until then. -->
+        <img src="images/marky-hero.jpg" alt="Marky of Markybap, the Pambansang Rater, with his signature dish" class="h-full w-full object-cover" onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80'}else{this.remove()}" />
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-char/80 to-transparent p-5 pt-16 text-white">
-          <p class="text-xs font-bold uppercase tracking-widest text-gold">[Hero photo placeholder]</p>
+          <p class="text-xs font-bold uppercase tracking-widest text-gold">The Pambansang Rater</p>
           <p class="font-display text-2xl uppercase">Markybap × his signature ulam</p>
         </div>
       </div>
@@ -124,10 +125,18 @@
   <!-- Social proof bar -->
   <div class="border-y-2 border-char bg-char text-cream">
     <div class="mx-auto grid max-w-7xl grid-cols-2 divide-cream/15 px-4 sm:px-6 md:grid-cols-4 md:divide-x lg:px-8">
-      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">500K+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Followers</p></div>
+      <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">1M+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Followers</p></div>
       <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">10M+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Video Views</p></div>
       <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">300+</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Spots Rated</p></div>
       <div class="py-6 text-center"><p class="font-display text-4xl text-gold sm:text-5xl">100%</p><p class="mt-1 text-xs font-bold uppercase tracking-widest text-cream/70">Honest Ratings</p></div>
+    </div>
+    <div class="border-t border-cream/10">
+      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2 px-4 py-4 text-sm font-extrabold uppercase sm:gap-3 sm:px-6 lg:px-8">
+        <span class="text-xs tracking-widest text-cream/60">Catch Marky on</span>
+        <span class="rounded-full border-2 border-gold px-3 py-1 text-gold">🏆 Pambansang Rater</span>
+        <span class="rounded-full border-2 border-cream/30 px-3 py-1">🍳 Luto Mo, Rate Ko</span>
+        <span class="rounded-full border-2 border-cream/30 px-3 py-1">🎬 Bobo Cooking Show</span>
+      </div>
     </div>
   </div>
   <div class="overflow-hidden border-b-2 border-char bg-gold py-3" aria-hidden="true">
@@ -158,14 +167,16 @@
       <div>
         <p class="text-sm font-extrabold uppercase tracking-widest text-chili">Markybap's Kitchen</p>
         <h2 class="mt-2 font-display text-4xl uppercase sm:text-5xl">Menu / Shop</h2>
-        <p class="mt-3 max-w-xl text-char-700">Small-batch, made the way I'd rate a 10. Add to your order, then send it to us via Messenger, Viber, or SMS — we'll confirm and deliver.</p>
+        <p class="mt-3 max-w-xl text-char-700">Small-batch, made the way I'd rate a 10. Add to your order, then send it to us via Messenger, Viber, or SMS — we'll confirm and deliver. Plus my Rated Picks: gear and finds I've tested, available on Shopee, Lazada &amp; TikTok Shop.</p>
       </div>
       <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-char bg-gold-light px-4 py-3 text-sm font-bold">
         <svg class="h-6 w-6 shrink-0 text-chili" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
         Metro Manila delivery &amp; nationwide shipping
       </div>
     </div>
-    <div id="productGrid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+    <div id="shopFilters" class="-mx-4 mt-10 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:px-0" role="tablist" aria-label="Filter shop"></div>
+    <div id="productGrid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+    <p class="mt-8 text-center text-xs text-char-700">Rated Picks are affiliate links — I may earn a small commission at no extra cost to you. Ratings stay honest, as always.</p>
   </div>
 </section>
 
@@ -242,9 +253,9 @@
         <p class="mt-4 max-w-md text-lg text-white/90">Daily food reviews, behind-the-scenes cooking, and first dibs on restock announcements — sold-out batches go fast.</p>
       </div>
       <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-        <a href="[Insert Facebook Page Link]" target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
+        <a href="https://www.facebook.com/markybap" data-fb-link target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1877F2] text-white"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></span>
-          <span><span class="block font-extrabold">Facebook</span><span class="text-sm text-char-700">500K+ followers</span></span>
+          <span><span class="block font-extrabold">Facebook</span><span class="text-sm text-char-700">1M+ followers</span></span>
         </a>
         <a href="https://www.tiktok.com/@markybap" target="_blank" rel="noopener" class="btn-pop flex items-center gap-3 rounded-2xl border-2 border-char bg-white p-4 text-char shadow-pop-sm">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-char text-white"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 3a5 5 0 0 0 4 4v3.2a8 8 0 0 1-4-1.2v6.5A6.5 6.5 0 1 1 10 9v3.3a3.3 3.3 0 1 0 3.3 3.2V3h3.2z"/></svg></span>
@@ -267,9 +278,38 @@
       <a href="#top" class="font-display text-3xl tracking-wide">MARKY<span class="text-gold">BAP</span></a>
       <p class="mt-3 max-w-sm text-cream/70">Honest food ratings. Crave-worthy eats. Proudly Filipino, proudly <em>sulit</em>.</p>
       <div class="mt-6 rounded-2xl border-2 border-cream/15 bg-char-800 p-5">
-        <p class="font-display text-xl uppercase text-gold">Want your restaurant featured?</p>
-        <p class="mt-1 text-sm text-cream/70">For food features, brand collaborations, and events. Note: I always share my honest verdict — paid or not.</p>
-        <a href="mailto:collabs@markybap.ph?subject=Feature%20%2F%20Collaboration%20Inquiry" class="btn-pop mt-4 inline-block rounded-full border-2 border-char bg-gold px-5 py-2 text-sm font-extrabold uppercase text-char">Send an Inquiry</a>
+        <p class="font-display text-xl uppercase text-gold">Want your restaurant or brand featured?</p>
+        <p class="mt-1 text-sm text-cream/70">For brand deals, restaurant reviews, and events. Note: I always share my honest verdict — paid or not.</p>
+        <form id="inquiryForm" novalidate class="mt-4 space-y-3">
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label for="inqName" class="sr-only">Your name</label>
+              <input id="inqName" type="text" placeholder="Your name" autocomplete="name" class="field-dark" />
+              <p class="field-err hidden" data-err-for="inqName"></p>
+            </div>
+            <div>
+              <label for="inqBrand" class="sr-only">Brand or restaurant</label>
+              <input id="inqBrand" type="text" placeholder="Brand / restaurant" autocomplete="organization" class="field-dark" />
+              <p class="field-err hidden" data-err-for="inqBrand"></p>
+            </div>
+          </div>
+          <div>
+            <label for="inqType" class="sr-only">Inquiry type</label>
+            <select id="inqType" class="field-dark">
+              <option value="">Inquiry type…</option>
+              <option>Brand Deal</option>
+              <option>Restaurant Review</option>
+              <option>Event</option>
+            </select>
+            <p class="field-err hidden" data-err-for="inqType"></p>
+          </div>
+          <div>
+            <label for="inqMsg" class="sr-only">Message</label>
+            <textarea id="inqMsg" rows="3" placeholder="Tell us about your brand, dates, and budget" class="field-dark"></textarea>
+            <p class="field-err hidden" data-err-for="inqMsg"></p>
+          </div>
+          <button type="submit" id="inqSubmit" class="btn-pop inline-flex min-h-[44px] items-center rounded-full border-2 border-char bg-gold px-6 py-2 text-sm font-extrabold uppercase text-char">Send Inquiry</button>
+        </form>
       </div>
     </div>
     <div>
@@ -325,9 +365,21 @@
 
     <div id="checkoutForm" class="mt-6 hidden space-y-3">
       <p class="text-sm font-extrabold uppercase tracking-widest text-chili">Delivery details</p>
-      <input id="custName" type="text" placeholder="Your name" autocomplete="name" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
-      <input id="custPhone" type="tel" placeholder="Mobile number" autocomplete="tel" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
-      <textarea id="custAddress" rows="2" placeholder="Delivery address" autocomplete="street-address" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60"></textarea>
+      <div>
+        <label for="custName" class="sr-only">Your name</label>
+        <input id="custName" type="text" placeholder="Your name *" autocomplete="name" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
+        <p class="field-err hidden" data-err-for="custName"></p>
+      </div>
+      <div>
+        <label for="custPhone" class="sr-only">Mobile number</label>
+        <input id="custPhone" type="tel" inputmode="tel" placeholder="Mobile number * (e.g. 0917 123 4567)" autocomplete="tel" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60" />
+        <p class="field-err hidden" data-err-for="custPhone"></p>
+      </div>
+      <div>
+        <label for="custAddress" class="sr-only">Delivery address</label>
+        <textarea id="custAddress" rows="2" placeholder="Delivery address *" autocomplete="street-address" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60"></textarea>
+        <p class="field-err hidden" data-err-for="custAddress"></p>
+      </div>
       <select id="custPayment" class="w-full rounded-xl border-2 border-char bg-white px-4 py-3 outline-none focus:ring-4 focus:ring-gold/60">
         <option>GCash</option><option>Maya</option><option>Cash on Delivery</option><option>Bank Transfer</option>
       </select>
@@ -368,7 +420,7 @@
 const CONFIG = {
   messengerUsername: 'markybap',          // m.me/<username>  → replace with the real Facebook Page username
   orderPhone: '+639171234567',            // SMS / Viber number for orders
-  facebookPage: '[Insert Facebook Page Link]',
+  facebookPage: 'https://www.facebook.com/markybap', // ⚠ confirm this is Marky's real Page URL
 };
 
 const U = (id, w = 800) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
@@ -390,6 +442,21 @@ const PRODUCTS = [
   { id: 'bundle', name: 'Kain Muna Bundle Deal', size: '3 items + free tote', price: 549, was: 597, tags: ['Save ₱48', 'Gift-ready', 'All-in'], desc: 'One of each: Chili Garlic Crunch, Chicharon Bits, and Adobo Flakes. Sulit na sulit.', img: 'photo-1504674900247-0877df9cc836', badge: 'Best Value' },
 ];
 
+/* Rated Affiliate Picks — SAMPLE entries; replace with the list from the Dashboard (Menu & Picks tab).
+   platform: 'Shopee' | 'Lazada' | 'TikTok Shop'. url: the affiliate link (if empty, the button opens a platform search). */
+const AFFILIATE_PICKS = [
+  { id: 'a1', name: 'Cast Iron Sizzling Plate', platform: 'Shopee', price: 399, score: 9.3, verdict: 'Keeps sisig sizzling till the last bite.', img: 'photo-1512058564366-18510be2db19', url: '' },
+  { id: 'a2', name: 'Stone Mortar & Pestle (Lusong)', platform: 'Lazada', price: 549, score: 8.8, verdict: 'Heavy, steady, and grinds garlic in seconds.', img: 'photo-1556910103-1c02745aae4d', url: '' },
+  { id: 'a3', name: 'Mini Air Fryer 4L', platform: 'TikTok Shop', price: 1899, score: 8.5, verdict: 'Crispy lechon kawali with half the talsik.', img: 'photo-1565299624946-b28f40a0ae38', url: '' },
+  { id: 'a4', name: 'Clay Palayok Set', platform: 'Shopee', price: 699, score: 9.0, verdict: 'Sinigang tastes like lola\'s — no joke.', img: 'photo-1547592180-85f173990554', url: '' },
+];
+
+const PLATFORMS = {
+  'Shopee': { cls: 'bg-[#EE4D2D] text-white', search: q => `https://shopee.ph/search?keyword=${encodeURIComponent(q)}` },
+  'Lazada': { cls: 'bg-[#0F146D] text-white', search: q => `https://www.lazada.com.ph/catalog/?q=${encodeURIComponent(q)}` },
+  'TikTok Shop': { cls: 'bg-char text-white', search: q => `https://www.tiktok.com/search?q=${encodeURIComponent(q)}` },
+};
+
 /* ===================== HELPERS ===================== */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -403,13 +470,41 @@ function rating(score) {
   return { label: 'Skip It', cls: 'bg-chili text-white' };
 }
 
-function toast(msg) {
+function toast(msg, ms = 1800) {
   const t = $('#toast');
   t.textContent = msg;
   t.classList.remove('opacity-0', '-translate-y-4');
   clearTimeout(toast._t);
-  toast._t = setTimeout(() => t.classList.add('opacity-0', '-translate-y-4'), 1800);
+  toast._t = setTimeout(() => t.classList.add('opacity-0', '-translate-y-4'), ms);
 }
+
+/* Field validation — rules: [[inputId, testFn, errorMessage], ...]. Returns the first invalid input or null. */
+function showFieldError(id, msg) {
+  const input = $('#' + id), err = $(`[data-err-for="${id}"]`);
+  input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+  input.classList.toggle('field-invalid', !!msg);
+  if (err) { err.textContent = msg || ''; err.classList.toggle('hidden', !msg); }
+}
+function validateFields(rules) {
+  let first = null;
+  rules.forEach(([id, test, msg]) => {
+    const ok = test($('#' + id).value.trim());
+    showFieldError(id, ok ? '' : msg);
+    if (!ok && !first) first = $('#' + id);
+  });
+  return first;
+}
+function liveClear(rules) {
+  rules.forEach(([id, test]) => $('#' + id).addEventListener('input', e => {
+    if (test(e.target.value.trim())) showFieldError(id, '');
+  }));
+}
+
+/* Safe localStorage */
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
 
 /* ===================== MOBILE MENU ===================== */
 const menuBtn = $('#menuBtn'), mobileMenu = $('#mobileMenu');
@@ -475,9 +570,44 @@ $('#reviewFilters').addEventListener('click', e => {
   renderFilters(); renderReviews();
 });
 
-/* ===================== PRODUCTS ===================== */
+/* ===================== SHOP (Kitchen + Rated Picks) ===================== */
+const SHOP_TABS = [['all', 'All'], ['kitchen', 'Markybap Kitchen'], ['picks', 'Rated Affiliate Picks']];
+let activeShop = 'all';
+
+function renderShopFilters() {
+  $('#shopFilters').innerHTML = SHOP_TABS.map(([k, label]) => `
+    <button type="button" role="tab" aria-selected="${k === activeShop}" data-shop="${k}"
+      class="min-h-[44px] shrink-0 rounded-full border-2 border-char px-4 py-2 text-sm font-extrabold uppercase transition ${k === activeShop ? 'bg-char text-cream shadow-pop-sm' : 'bg-white hover:bg-gold-light'}">${label}</button>`).join('');
+}
+
+function pickCard(a) {
+  const b = rating(a.score), pf = PLATFORMS[a.platform] || PLATFORMS['Shopee'];
+  const href = a.url || pf.search(a.name);
+  return `
+    <article class="group flex flex-col overflow-hidden rounded-3xl border-2 border-char bg-cream shadow-pop transition hover:-translate-y-1">
+      <div class="img-wrap relative aspect-square overflow-hidden border-b-2 border-char">
+        <img src="${U(a.img, 700)}" alt="${esc(a.name)}" loading="lazy" class="h-full w-full object-cover" onerror="this.remove()" />
+        <span class="absolute left-3 top-3 rounded-full border-2 border-char bg-white px-3 py-1 text-xs font-extrabold uppercase">Rated Pick</span>
+        <div class="stamp absolute right-3 top-3 rounded-2xl border-2 border-char ${b.cls} px-3 py-2 text-center shadow-pop-sm">
+          <p class="font-display text-2xl leading-none">${a.score.toFixed(1)}<span class="text-xs">/10</span></p>
+          <p class="text-[10px] font-extrabold uppercase">${b.label}</p>
+        </div>
+      </div>
+      <div class="flex flex-1 flex-col p-5">
+        <span class="self-start rounded-full px-2 py-0.5 text-[11px] font-extrabold uppercase ${pf.cls}">${esc(a.platform)}</span>
+        <h3 class="mt-3 font-display text-2xl uppercase leading-tight">${esc(a.name)}</h3>
+        <p class="mt-2 flex-1 text-sm text-char-700">"${esc(a.verdict)}"</p>
+        <p class="mt-4 font-display text-3xl text-chili"><span class="font-sans text-sm font-bold text-char-700">approx.</span> ${peso(a.price)}</p>
+        <a href="${esc(href)}" target="_blank" rel="noopener sponsored" class="btn-pop mt-3 flex w-full items-center justify-center gap-2 rounded-full border-2 border-char py-3 font-extrabold uppercase shadow-pop-sm ${pf.cls}">
+          Buy on ${esc(a.platform)}
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </article>`;
+}
+
 function renderProducts() {
-  $('#productGrid').innerHTML = PRODUCTS.map(p => `
+  const kitchen = activeShop === 'picks' ? '' : PRODUCTS.map(p => `
     <article class="group flex flex-col overflow-hidden rounded-3xl border-2 border-char bg-cream shadow-pop transition hover:-translate-y-1">
       <div class="img-wrap relative aspect-square overflow-hidden border-b-2 border-char">
         <img src="${U(p.img, 700)}" alt="${esc(p.name)}" loading="lazy" class="h-full w-full object-cover" onerror="this.remove()" />
@@ -499,10 +629,25 @@ function renderProducts() {
         </button>
       </div>
     </article>`).join('');
+  const picks = activeShop === 'kitchen' ? '' : AFFILIATE_PICKS.map(pickCard).join('');
+  $('#productGrid').innerHTML = kitchen + picks;
 }
 
+$('#shopFilters').addEventListener('click', e => {
+  const btn = e.target.closest('[data-shop]');
+  if (!btn) return;
+  activeShop = btn.dataset.shop;
+  renderShopFilters(); renderProducts();
+});
+
 /* ===================== CART ===================== */
-const cart = new Map(); // id -> qty (in-memory)
+const CART_KEY = 'markybap-cart-v1', CUST_KEY = 'markybap-customer-v1';
+const cart = new Map(); // id -> qty, persisted to localStorage
+(store.get(CART_KEY) || []).forEach(entry => {
+  if (!Array.isArray(entry)) return;
+  const [id, qty] = entry, n = Math.floor(Number(qty));
+  if (PRODUCTS.some(p => p.id === id) && n > 0) cart.set(id, Math.min(n, 99));
+});
 
 function cartLines() {
   return [...cart.entries()].map(([id, qty]) => ({ ...PRODUCTS.find(p => p.id === id), qty }));
@@ -564,14 +709,14 @@ function renderCart() {
         <p class="text-xs text-char-700">${peso(l.price)} · ${esc(l.size)}</p>
         <div class="mt-2 flex items-center justify-between">
           <div class="flex items-center rounded-full border-2 border-char">
-            <button type="button" data-dec="${l.id}" class="grid h-8 w-8 place-items-center font-extrabold" aria-label="Decrease quantity">−</button>
-            <span class="w-6 text-center text-sm font-extrabold">${l.qty}</span>
-            <button type="button" data-inc="${l.id}" class="grid h-8 w-8 place-items-center font-extrabold" aria-label="Increase quantity">+</button>
+            <button type="button" data-dec="${l.id}" class="grid h-11 w-11 place-items-center rounded-full text-lg font-extrabold active:bg-gold-light" aria-label="Decrease quantity">−</button>
+            <span class="w-7 text-center font-extrabold">${l.qty}</span>
+            <button type="button" data-inc="${l.id}" class="grid h-11 w-11 place-items-center rounded-full text-lg font-extrabold active:bg-gold-light" aria-label="Increase quantity">+</button>
           </div>
           <span class="font-extrabold text-chili">${peso(l.price * l.qty)}</span>
         </div>
       </div>
-      <button type="button" data-remove="${l.id}" class="self-start text-char-700 hover:text-chili" aria-label="Remove ${esc(l.name)}">
+      <button type="button" data-remove="${l.id}" class="-mr-2 -mt-2 grid h-11 w-11 shrink-0 place-items-center self-start text-char-700 hover:text-chili" aria-label="Remove ${esc(l.name)}">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </li>`).join('');
@@ -583,6 +728,7 @@ function renderCart() {
   $('[data-cart-total-fab]').textContent = peso(total);
   $('#fabCart').classList.toggle('hidden', count === 0);
   $('#fabCart').classList.toggle('flex', count > 0);
+  store.set(CART_KEY, [...cart.entries()]);
   updateMessage();
 }
 
@@ -622,7 +768,33 @@ document.addEventListener('click', e => {
 overlay.addEventListener('click', closeCart);
 $('#closeCart').addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) closeCart(); });
-['#custName', '#custPhone', '#custAddress', '#custPayment'].forEach(s => $(s).addEventListener('input', updateMessage));
+/* Customer details: restore + save so a refresh on mobile doesn't wipe them */
+const CUST_FIELDS = ['custName', 'custPhone', 'custAddress', 'custPayment'];
+const savedCust = store.get(CUST_KEY) || {};
+CUST_FIELDS.forEach(id => { if (typeof savedCust[id] === 'string') $('#' + id).value = savedCust[id]; });
+CUST_FIELDS.forEach(id => $('#' + id).addEventListener('input', () => {
+  store.set(CUST_KEY, Object.fromEntries(CUST_FIELDS.map(f => [f, $('#' + f).value])));
+  updateMessage();
+}));
+
+/* Checkout validation — blocks Copy / Messenger / Viber / SMS until details are real */
+const CHECKOUT_RULES = [
+  ['custName', v => v.length >= 2, 'Please enter your name.'],
+  ['custPhone', v => /^(\+?63|0)9\d{9}$/.test(v.replace(/[\s()-]/g, '')), 'Enter a valid PH mobile number, e.g. 0917 123 4567.'],
+  ['custAddress', v => v.length >= 10, 'Please enter your full delivery address.'],
+];
+liveClear(CHECKOUT_RULES);
+
+function checkoutReady() {
+  const bad = validateFields(CHECKOUT_RULES);
+  if (bad) {
+    bad.focus();
+    bad.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    toast('Complete your delivery details first 👆', 2600);
+    return false;
+  }
+  return true;
+}
 
 /* Copy + send */
 async function copyMsg() {
@@ -631,12 +803,37 @@ async function copyMsg() {
   catch { const ta = $('#orderMsg'); ta.select(); document.execCommand('copy'); }
   toast('Order copied! Paste it in our chat ✅');
 }
-$('#copyOrder').addEventListener('click', copyMsg);
-$('#sendMessenger').addEventListener('click', () => { copyMsg(); });
+$('#copyOrder').addEventListener('click', () => { if (checkoutReady()) copyMsg(); });
+$('#sendMessenger').addEventListener('click', e => { if (!checkoutReady()) { e.preventDefault(); return; } copyMsg(); });
+['#sendViber', '#sendSMS'].forEach(s => $(s).addEventListener('click', e => { if (!checkoutReady()) e.preventDefault(); }));
+
+/* ===================== COLLAB INQUIRY FORM (UI only for now) ===================== */
+const INQUIRY_RULES = [
+  ['inqName', v => v.length >= 2, 'Please enter your name.'],
+  ['inqBrand', v => v.length >= 2, 'Please enter your brand or restaurant.'],
+  ['inqType', v => v !== '', 'Please choose an inquiry type.'],
+  ['inqMsg', v => v.length >= 10, 'Tell us a bit more (at least 10 characters).'],
+];
+liveClear(INQUIRY_RULES);
+$('#inqType').addEventListener('change', e => { if (e.target.value) showFieldError('inqType', ''); });
+
+$('#inquiryForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const bad = validateFields(INQUIRY_RULES);
+  if (bad) { bad.focus(); return; }
+  const btn = $('#inqSubmit'), name = $('#inqName').value.trim().split(' ')[0];
+  btn.disabled = true; btn.textContent = 'Sending…';
+  setTimeout(() => {
+    toast(`Salamat, ${name}! Inquiry received — we'll get back to you soon ✅`, 3200);
+    e.target.reset();
+    btn.disabled = false; btn.textContent = 'Send Inquiry';
+  }, 700);
+});
 
 /* ===================== INIT ===================== */
 $('#year').textContent = new Date().getFullYear();
-renderFilters(); renderReviews(); renderProducts(); renderCart();
+$$('[data-fb-link]').forEach(a => { a.href = CONFIG.facebookPage; });
+renderFilters(); renderReviews(); renderShopFilters(); renderProducts(); renderCart();
 </script>
 </body>
 </html>
