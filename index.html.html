@@ -31,22 +31,7 @@
     },
   };
 </script>
-<style>
-  html { scroll-padding-top: 80px; }
-  body { -webkit-tap-highlight-color: transparent; }
-  .img-wrap { background: linear-gradient(135deg, #FFB800 0%, #D7261E 100%); }
-  .img-wrap img { transition: transform .5s ease; }
-  .group:hover .img-wrap img { transform: scale(1.06); }
-  .marquee { animation: marquee 28s linear infinite; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .btn-pop { transition: transform .15s ease, box-shadow .15s ease; }
-  .btn-pop:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 0 #17140F; }
-  .btn-pop:active { transform: translate(2px, 2px); box-shadow: 0 0 0 0 #17140F; }
-  .bump { animation: bump .35s ease; }
-  @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.35)} 100%{transform:scale(1)} }
-  .stamp { transform: rotate(-8deg); }
-  @media (prefers-reduced-motion: reduce) { .marquee, .bump { animation: none; } html { scroll-behavior: auto; } }
-</style>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-cream font-sans text-char antialiased">
 
